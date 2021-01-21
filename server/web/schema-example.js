@@ -1,3 +1,4 @@
+// refer to: https://github.com/json-editor/json-editor
 {
 	title: "型号配置",
 	type: "object",
