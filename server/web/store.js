@@ -10,7 +10,10 @@ WUI.m_enhanceFn[".wui-jsonEditor"] = function (jo) {
 	jdlg.on("beforeshow", onBeforeShow)
 	function onBeforeShow(ev, formMode, opt) 
 	{
-		jval.prop("disabled", formMode == FormMode.forSet);
+		setTimeout(onShow);
+		function onShow() {
+			jval.prop("disabled", formMode == FormMode.forSet);
+		}
 	}
 
 	function btnFormat_click(ev) {
