@@ -12,6 +12,8 @@
 
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css" />
 
+此外，插件还依赖于图标库font-awesome.css (4.x版本)以及相关字体库(font-icon/fonts/ttf,svg等)，由于jdcloud中默认有此库，无须再引入。
+
 在逻辑页对话框中使用示例：page/dlgOrderConfRule.html
 
 		<tr>
