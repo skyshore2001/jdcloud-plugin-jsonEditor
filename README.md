@@ -95,6 +95,15 @@ schema文件一般存为 schema/xx.js，是一个返回js对象的脚本，它�
 - no_additional_properties: 设置为true不允许任意加其它属性
 - remove_empty_properties: 设置为true则忽略所有空的属性。插件已默认设置了此选项，不必再设置
 
+目前默认设置如下选项：
+
+		var editorOpt = {
+			theme: "bootstrap4",
+			iconlib: "fontawesome4", 
+			remove_empty_properties: true, // 如果未填写值，则该项不要加到JSON中（仅对对象有效果；若数组中有未填写项，则会补空串）
+			use_default_values: false  // 此项若为true，则对于type=number的控件即使未填写值，值会自动设置为0
+		}
+
 也可以设置各级editor选项(可全局设置，也可在schema各级的options中设置)，如对象上
 
 - disable_array_delete_all_rows: true, 不显示删除ALL按钮

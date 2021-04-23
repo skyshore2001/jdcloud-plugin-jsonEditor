@@ -19,7 +19,8 @@ function initDlgJson()
 		var editorOpt = $.extend({
 			theme: "bootstrap4",
 			iconlib: "fontawesome4", 
-			remove_empty_properties: true
+			remove_empty_properties: true,
+			use_default_values: false
 		}, opt.editorOpt);
 		jsonEditor_ = new JSONEditor(jo[0], editorOpt);
 		if (editorOpt.onReady) {
