@@ -1,6 +1,10 @@
 WUI.m_enhanceFn[".wui-jsonEditor"] = function (jo) {
+	var jo_opt = WUI.getOptions(jo);
 	var jdlg = jo.closest(".wui-dialog");
 	var jval = jo.find("textarea:first");
+	if (jo_opt.input === false) {
+		jo.find(":input:first, .btnEdit, .btnFormat").hide();
+	}
 	jo.find(".btnEdit").click(function () {
 		jval.prop("disabled", false);
 	});
@@ -23,16 +27,9 @@ WUI.m_enhanceFn[".wui-jsonEditor"] = function (jo) {
 	}
 
 	function btnEditJson_click(ev) {
-		var url = $(this).data("schema");
+		var url = jo_opt.schema || $(this).data("schema");
 		WUI.assert(url);
-		WUI.loadJson(url, function (data) {
-			var val = jval.val();
-			WUI.showDlg("#dlgJson", {
-				schema: data,
-				jsonValue: val,
-				onSetJson: onSetJson
-			});
-		});
+		DlgJson.show(url, jval.val(), onSetJson);
 	}
 
 	function onSetJson(data) {
@@ -41,3 +38,17 @@ WUI.m_enhanceFn[".wui-jsonEditor"] = function (jo) {
 		jval.val(str);
 	}
 };
+
+var DlgJson = {
+	show: function (schemaUrl, initValue, onSetJson, dlgOpt) {
+		WUI.loadJson(schemaUrl, function (data) {
+			var editorOpt = data.schema? data: { schema: data };
+			editorOpt.startval = initValue;
+			WUI.showDlg("#dlgJson", $.extend({
+				onSetJson: onSetJson,
+				editorOpt: editorOpt,
+				dialogOpt: {maximized: true}
+			}, dlgOpt));
+		});
+	}
+}
