@@ -93,22 +93,27 @@ schema文件一般存为 schema/xx.js，是一个返回js对象的脚本，它�
 常用的JSONEditor选项有：
 
 - no_additional_properties: 设置为true不允许任意加其它属性
-- remove_empty_properties: 设置为true则忽略所有空的属性。插件已默认设置了此选项，不必再设置
-
-目前默认设置如下选项：
-
-		var editorOpt = {
-			theme: "bootstrap4",
-			iconlib: "fontawesome4", 
-			remove_empty_properties: true, // 如果未填写值，则该项不要加到JSON中（仅对对象有效果；若数组中有未填写项，则会补空串）
-			use_default_values: false  // 此项若为true，则对于type=number的控件即使未填写值，值会自动设置为0
-		}
+- remove_empty_properties: 设置为true则忽略所有空的属性。
+- show_opt_in: 设置为true则缺省显示所有属性，如果是非必选（schema中属性选项`required: true`）属性，则属性前显示勾选框。
 
 也可以设置各级editor选项(可全局设置，也可在schema各级的options中设置)，如对象上
 
 - disable_array_delete_all_rows: true, 不显示删除ALL按钮
 - disable_array_delete_last_row: true, 不显示删除Last按钮
 - disable_properties: true, 不显示属性框
+
+在schema各级中常用选项：
+
+- defaultProperties: 为object类型指定在未指定值时缺省显示的属性（若想显示所有属性应设置`show_opt_in=true`），要使用其它属性只能从属性列表中手工勾选。示例：`["res", "join", "default"]`
+- required: 指定必填属性，这些属性总会显示。
+
+本插件默认设置了如下选项（可在schema文件中再覆盖它们）：
+
+	theme: "bootstrap4",
+	iconlib: "fontawesome4", 
+	remove_empty_properties: true,
+	use_default_values: false,
+	show_opt_in: true
 
 ## JSONEditor扩展功能
 
