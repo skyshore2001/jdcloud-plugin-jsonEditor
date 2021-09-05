@@ -26,8 +26,8 @@
 		},
 		material: {
 			title: "material/资料",
-			type: "array", // "tabs", "tabs-top"
-			format: "table",
+			type: "array",
+			format: "table", // "tabs", "tabs-top"
 			items: {
 				title: "资料",
 				type: "object",
