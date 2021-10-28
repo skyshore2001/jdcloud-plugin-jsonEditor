@@ -50,6 +50,10 @@
 其中btnEditJson则是弹出新的窗口，在该窗口中编辑配置。
 配置项的schema定义由`data-schema`属性定义，示例见web/schema-example.js。
 
+wui-jsonEditor组件有以下事件：
+
+- retdata(ev, data): data为关闭对话框时设置的JSON对象（不是字符串），可修改。
+
 ## schema文件格式及常用配置值
 
 schema文件一般存为 schema/xx.js，是一个返回js对象的脚本，它比普通JSON文件更灵活。

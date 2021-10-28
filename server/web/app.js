@@ -2,7 +2,7 @@ var m_dfdJsonEditor;
 function loadJsonEditorLib()
 {
 	if (m_dfdJsonEditor == null) {
-		m_dfdJsonEditor = WUI.loadScript("lib/jsoneditor.min.js");
+		m_dfdJsonEditor = $.when(WUI.loadScript("lib/jsoneditor.min.js"), WUI.loadScript("lib/jsoneditor-cn.js"));
 		m_dfdJsonEditor.then(initJsonEditor);
 	}
 	return m_dfdJsonEditor;

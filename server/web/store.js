@@ -33,6 +33,7 @@ WUI.m_enhanceFn[".wui-jsonEditor"] = function (jo) {
 	}
 
 	function onSetJson(data) {
+		jo.trigger("retdata", [data]);
 		var str = JSON.stringify(data, null, 2);
 		jval.prop("disabled", false);
 		jval.val(str);
